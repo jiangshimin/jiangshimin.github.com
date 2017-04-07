@@ -6,7 +6,8 @@ offsetWidth属性返回值是整数，而style.width的返回值是字符串。
 style.width仅能返回以style方式定义的内部样式表的width属性值。
 
 2>用js的style属性可以获得html标签的样式，但是不能获取非行间(css)样式。那么怎么用js获取css的非行间样式呢？在IE下可以用currentStyle，
-而在火狐下面我们需要用到getComputedStyle。下面是一个小示例：
+而在火狐下面我们需要用到getComputedStyle。下面是一个小示例：obj.currentStyle[attr];这样是取这个属性，attr是变量。可以是height，可以是width。
+如果obj.currentStyle.attr是去取样式的attr属性，实际上这个属性是不存在的，所以不行。
        <html xmlns="http://www.w3.org/1999/xhtml">  
        <head>  
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
