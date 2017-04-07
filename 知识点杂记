@@ -1,1 +1,40 @@
 
+1>this.style.width与this.offsetWidth区别
+offsetWidth属性可以返回对象的padding+border+width属性值之和，style.width返回值就是定义的width属性值。
+offsetWidth属性仅是可读属性，而style.width是可读写的。
+offsetWidth属性返回值是整数，而style.width的返回值是字符串。
+style.width仅能返回以style方式定义的内部样式表的width属性值。
+
+2>用js的style属性可以获得html标签的样式，但是不能获取非行间(css)样式。那么怎么用js获取css的非行间样式呢？在IE下可以用currentStyle，
+而在火狐下面我们需要用到getComputedStyle。下面是一个小示例：
+       <html xmlns="http://www.w3.org/1999/xhtml">  
+       <head>  
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+      <title>js用currentStyle和getComputedStyle获取css样式</title>  
+      <style type="text/css">  
+      #div1{width:100px; height:100px; background:red;}  
+      </style>  
+      <script type="text/javascript">  
+      function getStyle(obj, attr)  
+      {  
+          if(obj.currentStyle)  
+          {  
+              return obj.currentStyle[attr];  
+          }  
+          else  
+          {  
+              return getComputedStyle(obj,false)[attr];  
+          }  
+      }  
+      window.onload=function()  
+      {  
+          var oDiv=document.getElementById('div1');  
+          alert(getStyle(oDiv,'width'))  
+      }  
+      </script>  
+      </head>  
+
+      <body>  
+      <div id="div1"></div>  
+      </body>  
+      </html>  
